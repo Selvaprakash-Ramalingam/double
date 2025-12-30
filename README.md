@@ -2,19 +2,19 @@
 
 Persistent context for Claude Code, Cursor, and other AI tools. Skips the database, MCP servers, embeddings for simple markdown files and good ol' git.
 
-> **WARNING:** This is a PUBLIC template. Once you clone it and add your notes, DO NOT push your personal version to a public repo. Your memory will contain secrets, API keys, personal information, and your working style. Keep your fork private or use it locally only.
+> **WARNING:** This is a PUBLIC template. Once you clone it and add your notes, DO NOT push your personal version to a public repo. Your memory will contain secrets (both dark personal secrets and security risk secrets), personal information and your working style. Keep your fork private or use it locally only.
 
 ## What is Double?
 
-AI assistants forget everything between sessions. Your setup decisions, coding patterns, project context - gone every time.
+AI assistants forget everything between sessions. Your engineering decisions (which I think are especially important), coding patterns, project context.
 
-Double solves this with organized markdown files that you control. Think of it as a second brain for your AI assistant.
+Double solves this with organised markdown files that you control. Think of it as a second brain for your AI assistant.
 
-**Why "Double"?** Named after Dostoevsky's novel "The Double" - it's your second self. Not just engineering and research, but business ideas, personal notes, hobbies, writing style. Everything that makes up how you think and work.
+**Why "Double"?** Named after Dostoevsky's novel "The Double" - it's your second self. Not just engineering and research, but business ideas, personal notes, hobbies, workflow preferences.
 
 ## Make It Yours
 
-**This is a template, not a rigid system.** The folder structure, commands, and workflows here are a starting point based on one person's working style. You should heavily customize it:
+**This is a template, not a rigid system.** The folder structure, commands, and workflows here are a starting point based on one person's working style. You should heavily customise it:
 
 - Rename folders to match your mental model
 - Delete categories you don't need (maybe you don't track business ideas or research)
@@ -23,7 +23,7 @@ Double solves this with organized markdown files that you control. Think of it a
 - Change the rules in `meta/` to fit your style
 
 The only critical parts are:
-1. Organized markdown files you control
+1. Organised markdown files you control
 2. A capture → process → load workflow
 3. Using absolute paths (`~/double/`) in commands
 
@@ -53,9 +53,12 @@ When you run `/handoff` from `/Users/you/projects/blog/`, the command writes to 
 This means:
 - Commands work regardless of where you are
 - No relative path issues
-- One centralized memory across all your projects
+- One centralised memory across all your projects
+- I've found its less likely to accidentally commit to project repos!
 
 All commands use absolute paths (`~/double/`) to avoid this entirely.
+
+Also no sandbox issues from what I've found: Claude Code already has filesystem access, so ~/double/ doesn't add new attack surface. The commands are markdown files Claude reads, not executable scripts, so no injection risk.
 
 ## Quick Start
 
@@ -70,7 +73,7 @@ cd ~/double
 
 **2. Use the commands:**
 - `/handoff` - End of session, capture what matters
-- `/sync` - Route insights to organized files
+- `/sync` - Route insights to organised files
 - `/engineering` - Load engineering context (or `/tasks`, `/business`, `/research`)
 
 That's it. Commands auto-load in Claude Code.
@@ -87,7 +90,7 @@ Claude captures learnings, technical insights, and decisions. Appends to `.inbox
 ```bash
 /sync
 ```
-Routes entries to categorized files, archives processed items, commits to git.
+Routes entries to categorised files, archives processed items, commits to git.
 
 **Load context:**
 ```bash
@@ -132,4 +135,4 @@ Just read the markdown files in `~/double/`. No special configuration needed.
 
 ---
 
-Read the full explanation: [Double: Claude Code Memory Without the Database](https://ossa-ma.github.io/blog/double)
+Read the full explanation: [Double: Claude Code Memory Without MCPs and DBs](https://ossa-ma.github.io/blog/double)
