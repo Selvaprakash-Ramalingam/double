@@ -44,9 +44,9 @@ Everything else? Change it.
     └── commands/    # Skills that load context
 ```
 
-## Why `~/double/` at Top Level?
+## Why `~/double/` in Your Home Directory?
 
-The directory lives at `~/double/` (not nested in a project folder) because the commands need to work from anywhere.
+The directory lives at `~/double/` in your home directory (not nested in a project folder or `.claude/` directory) because the commands need to work from anywhere.
 
 When you run `/handoff` from `/Users/you/projects/blog/`, the command writes to `~/double/.inbox.md` - not `./inbox.md` in your current directory.
 
@@ -62,7 +62,10 @@ Also no sandbox issues from what I've found: Claude Code already has filesystem 
 
 ## Quick Start
 
-**1. Clone the template:**
+**1. Clone the template to your home directory:**
+
+> **IMPORTANT:** Clone to `~/double/` (your home directory), NOT inside a project folder or `.claude/` directory.
+
 ```bash
 git clone https://github.com/ossa-ma/double ~/double
 cd ~/double
@@ -71,12 +74,38 @@ cd ~/double
 # Your memory will contain personal info, API keys, and private notes
 ```
 
-**2. Use the commands:**
+**2. Make commands available globally:**
+
+Claude Code discovers commands from `~/.claude/commands/` (available everywhere) and `.claude/commands/` (project-specific). To use the Double commands from any directory, copy them to your personal commands directory:
+
+```bash
+cp ~/double/.claude/commands/*.md ~/.claude/commands/
+```
+
+**Advanced: Auto-sync with individual file symlinks**
+
+If you want double commands to auto-update and still keep non-double personal commands separate:
+
+```bash
+# Symlink each double command individually
+for file in ~/double/.claude/commands/*.md; do
+  ln -s "$file" ~/.claude/commands/$(basename "$file")
+done
+```
+
+Benefits:
+- ✅ Auto-sync for double commands
+- ✅ Can add other commands to `~/.claude/commands/` that stay separate
+- ⚠️ Need to re-run when adding new commands to double
+
+See [Claude Code Slash Commands docs](https://code.claude.com/docs/en/slash-commands) for more details on how command discovery works.
+
+**3. Use the commands:**
 - `/handoff` - End of session, capture what matters
 - `/sync` - Route insights to organised files
 - `/engineering` - Load engineering context (or `/tasks`, `/business`, `/research`)
 
-That's it. Commands auto-load in Claude Code.
+That's it. Commands are now available in Claude Code from any directory.
 
 ## Core Workflow
 
