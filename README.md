@@ -2,7 +2,9 @@
 
 Persistent context for Claude Code, Cursor, and other AI tools. Skips the database, MCP servers, embeddings for simple markdown files and good ol' git.
 
-> **WARNING:** This is a PUBLIC template. Once you clone it and add your notes, DO NOT push your personal version to a public repo. Your memory will contain secrets (both dark personal secrets and security risk secrets), personal information and your working style. Keep your fork private or use it locally only.
+> **WARNING:** This is a PUBLIC template. Once you clone it and add your notes, DO NOT push your personal version to a public repo. Your memory will contain secrets (both dark personal secrets and security risk secrets), personal information and your working style. Keep it local or push to a NEW private repo.
+>
+> **DO NOT use GitHub's "Fork" button** - forks of public repos cannot be made private. Use `git clone` instead (see Quick Start below).
 
 ## What is Double?
 
