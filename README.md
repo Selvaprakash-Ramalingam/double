@@ -12,6 +12,23 @@ Double solves this with organized markdown files that you control. Think of it a
 
 **Why "Double"?** Named after Dostoevsky's novel "The Double" - it's your second self. Not just engineering and research, but business ideas, personal notes, hobbies, writing style. Everything that makes up how you think and work.
 
+## Make It Yours
+
+**This is a template, not a rigid system.** The folder structure, commands, and workflows here are a starting point based on one person's working style. You should heavily customize it:
+
+- Rename folders to match your mental model
+- Delete categories you don't need (maybe you don't track business ideas or research)
+- Add new ones that fit your work (design/, writing/, client-work/, whatever)
+- Modify commands to match your workflow
+- Change the rules in `meta/` to fit your style
+
+The only critical parts are:
+1. Organized markdown files you control
+2. A capture → process → load workflow
+3. Using absolute paths (`~/double/`) in commands
+
+Everything else? Change it.
+
 ## Folder Structure
 
 ```
@@ -26,6 +43,19 @@ Double solves this with organized markdown files that you control. Think of it a
 └── .claude/
     └── commands/    # Skills that load context
 ```
+
+## Why `~/double/` at Top Level?
+
+The directory lives at `~/double/` (not nested in a project folder) because the commands need to work from anywhere.
+
+When you run `/handoff` from `/Users/you/projects/blog/`, the command writes to `~/double/.inbox.md` - not `./inbox.md` in your current directory.
+
+This means:
+- Commands work regardless of where you are
+- No relative path issues
+- One centralized memory across all your projects
+
+All commands use absolute paths (`~/double/`) to avoid this entirely.
 
 ## Quick Start
 
